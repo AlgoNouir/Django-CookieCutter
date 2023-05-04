@@ -19,9 +19,14 @@ trap "trap_ctrlc" SIGINT
 
 clear
 
+
+echo "install depenedenvies"
 python3 -m pip install django
 python3 -m pip install djangorestframework
+clear
+echo "start creating files ..."
 django-admin startproject SERVER .
+echo "main file generated"
 
 echo "insert your app name (finish with ctrl+C)"
 while true;do
