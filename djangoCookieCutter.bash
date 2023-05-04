@@ -6,10 +6,14 @@ appNames=()
 function trap_ctrlc ()
 {
     clear
+    mkdir APPS
+    # cd "APPS" || exit 2
     echo "install ${#appNames[@]} apps :: ${appNames[*]}"
     for appIndex in "${!appNames[@]}"; do
         app="${appNames[$appIndex]}"
         echo "install app -> $app"
+        python3 manage.py startapp "$app"
+        mv "$app" ./APPS
     done
     echo "Doing cleanup"
     exit 2
